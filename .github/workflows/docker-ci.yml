@@ -19,4 +19,5 @@ jobs:
           script: |
             cd ~/django-todo-cicd
             git pull origin develop
+            docker compose dowwn
             docker compose up -d --build
