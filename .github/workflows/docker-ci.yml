@@ -10,7 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy via SSH
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to Server
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SERVER_IP }}
@@ -19,5 +22,5 @@ jobs:
           script: |
             cd ~/django-todo-cicd
             git pull origin develop
-            docker compose dowwn
-            docker compose up -d --build
+            sudo docker compose down
+            sudo docker compose up -d --build
